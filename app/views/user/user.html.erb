@@ -1,0 +1,87 @@
+
+
+<!-- Main Content -->
+<div class="main-content"  style=" background: #f4f5f7; height: 100vh;"  >
+  <!-- Container Start -->
+  <div class="container">
+    <div class="row">
+    <h1>A Cat Digital Assignment</h1> 
+     <p><%= @message %></p>
+      <div class="col-md-3">
+        <h1 class="ml-1 mt-3">  <a href="/add_user" class="btn btn-primary btn-sm ml-2 ">Create User</a> </h1>
+      </div>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type%> alert-dismissible fade show col-md-6 mt-3" role="alert">
+           <img src onerror='myfn()'>
+    <button type="button" id="notice" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong></strong> <%= message %>
+  </div>
+      <% end %>
+    </div>
+    <!-- Table Start -->
+    <!-- Table End -->
+    <!-- Dark Table -->
+    <div class="row mt-5">
+      <div class="col">
+        <div class="card bg-default shadow">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="text-white ">  </h3>
+            <%
+=begin%>
+            <div class="float-right">
+              <input class="form-control" type="search" value="Filter" id="example-search-input">
+            </div>
+            <%
+=end%>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-dark table-flush">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Address</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @user.each do |u| %>
+                  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                        </a>
+                        <div class="media-body">
+                          <span class="mb-0 text-sm"><%= u.name%></span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                      <%= u.email %>
+                    </td>
+                    <td>
+                      <%= u.address %>
+                    </td>
+
+                     <td>
+                      
+                      
+                        <%= link_to 'Edit',user_edit_path(:id => u.id), method: :get, class: "btn btn-warning btn-sm"%> 
+                        <%= link_to 'Delete', user_delete_path(:id => u.id), method: :delete, data: { confirm: "Are you sure want to delete user?" },class: "btn btn-danger btn-sm" %>
+                     
+                    </td>
+                   
+                  </tr>
+                <%end%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Dark Table End-->
+  </div>
+  <!-- Container End -->
+</div>
+<!-- Main Content End -->
+
